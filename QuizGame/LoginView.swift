@@ -19,12 +19,17 @@ struct UserData {
     }
 
     var checkReset: Bool {
-        return !username.isEmpty || !password.isEmpty
+        return username.isEmpty && password.isEmpty
     }
 
     var checkRegistration: Bool {
         return username.isEmpty && password.isEmpty && nome.isEmpty && cognome.isEmpty && email.isEmpty
     }
+    mutating func emptyFileds(){
+        username = ""
+        password = ""
+    }
+    
 }
 
 struct MyTextField: View {
@@ -45,7 +50,7 @@ struct MyTextField: View {
         }
         .padding()
         .overlay(RoundedRectangle(cornerRadius: 8)
-        .stroke(isMandatary && textValue.isEmpty ? .red : .gray, lineWidth: 1))
+        .stroke(isMandatory && textValue.isEmpty ? .red : .gray, lineWidth: 1))
         .padding(EdgeInsets(top: 4, leading: 10, bottom: 4, trailing: 10))
         }
 }
@@ -55,6 +60,10 @@ struct LoginView: View {
     var body: some View {
         VStack {
             Image("ITSARicon")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 250)
+                .padding(.vertical)
             MyTextField(withIcon: "person.fill", textValue: $userValue.username,
             isMandatory: true, textHint: "username")
             MyTextField(withIcon: "key.fill", textValue: $userValue.password,
@@ -68,7 +77,7 @@ struct LoginView: View {
             Button("Pulisci") {
             userValue.emptyFileds()
             }.foregroundColor(.green)
-            .disabled(userValue.checkReset)
+                .disabled(userValue.checkReset)
             }
         }
     }
