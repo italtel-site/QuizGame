@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD0879472ACF056400427AC3 /* HomepageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0879462ACF056400427AC3 /* HomepageView.swift */; };
 		DD106E4B2ACAB42A00D813B2 /* QuizGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD106E4A2ACAB42A00D813B2 /* QuizGameApp.swift */; };
 		DD106E4D2ACAB42A00D813B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD106E4C2ACAB42A00D813B2 /* ContentView.swift */; };
 		DD106E4F2ACAB42C00D813B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD106E4E2ACAB42C00D813B2 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD0879462ACF056400427AC3 /* HomepageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageView.swift; sourceTree = "<group>"; };
 		DD106E472ACAB42A00D813B2 /* QuizGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD106E4A2ACAB42A00D813B2 /* QuizGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameApp.swift; sourceTree = "<group>"; };
 		DD106E4C2ACAB42A00D813B2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				DD106E782ACACCC000D813B2 /* LoginView.swift */,
 				DD106E4A2ACAB42A00D813B2 /* QuizGameApp.swift */,
 				DD106E4C2ACAB42A00D813B2 /* ContentView.swift */,
+				DD0879462ACF056400427AC3 /* HomepageView.swift */,
 				DD106E5C2ACAB69100D813B2 /* LaunchView.swift */,
 				DD106E4E2ACAB42C00D813B2 /* Assets.xcassets */,
 				DD106E502ACAB42C00D813B2 /* Preview Content */,
@@ -145,6 +148,7 @@
 			files = (
 				DD106E5D2ACAB69100D813B2 /* LaunchView.swift in Sources */,
 				DD106E4D2ACAB42A00D813B2 /* ContentView.swift in Sources */,
+				DD0879472ACF056400427AC3 /* HomepageView.swift in Sources */,
 				DD106E792ACACCC000D813B2 /* LoginView.swift in Sources */,
 				DD106E4B2ACAB42A00D813B2 /* QuizGameApp.swift in Sources */,
 			);
