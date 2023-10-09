@@ -38,6 +38,13 @@ struct MyTabNav: View {
     }
 }
 
+struct titolo: View {
+    var titolo: String
+    var body: some View {
+        Text(titolo).font(.system(size: 45)).frame(maxWidth: .infinity, alignment: .leading).padding()
+    }
+}
+
 struct ContentView: View {
     var body: some View {
         VStack {
