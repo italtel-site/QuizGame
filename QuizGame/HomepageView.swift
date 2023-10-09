@@ -33,7 +33,7 @@ struct HomepageView: View {
     @State var userValue = UserData(nome: "Prova")
     var body: some View {
         VStack {
-            Text("QuizAR").font(.title)
+            Titolo("QuizAR")
 
            if (checkGiorno()) {
                Text("Buongiorno, " + userValue.nome + "!").font(.title2)
@@ -47,8 +47,25 @@ struct HomepageView: View {
                 Text("Rimangono").font(.title2)
                 Text("120").font(.system(size: 45 ,weight: .bold))
                 Text("giorni alla prova").font(.title2)
-            }
+            }.padding()
             .background(Color.red)
+            .cornerRadius(12)
+
+            Button(action: {}){
+                VStack {
+                    Image(systemName: play.fill)
+                    Text("Avvia nuova simulazione").font(.title2)
+                }
+            }.padding()
+            .background(Color.red)
+            .cornerRadius(12)
+
+            Button(action: {}) {
+                HStack{
+                    Image(systemName: hammer.fill)
+                    Text("Esercitati senza limiti di tempo").font(.body)
+                }
+            }.cornerRadius(12)
         }
     }
 }
