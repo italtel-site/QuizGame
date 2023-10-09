@@ -33,25 +33,23 @@ struct HomepageView: View {
     @State var userValue = UserData(nome: "Prova")
     var body: some View {
         VStack {
-           Text("QuizAR").font(title)
+            Text("QuizAR").font(.title)
 
            if (checkGiorno()) {
-                Text("Buongiorno, " + userValue.nome + "!").font(title2)
+               Text("Buongiorno, " + userValue.nome + "!").font(.title2)
            }
 
            else{
-                Text("Buonasera, " + userValue.nome + "!").font(title2)
+               Text("Buonasera, " + userValue.nome + "!").font(.title2)
            }
 
             VStack {
-                Text("Rimangono").font(title2)
-                Text("120").font(title).font(.system(weight: .bold))
-                Text("giorni alla prova").font(title2)
+                Text("Rimangono").font(.title2)
+                Text("120").font(.system(size: 45 ,weight: .bold))
+                Text("giorni alla prova").font(.title2)
             }
             .background(Color.red)
-            .overlay(RoundedRectangle(cornerRadius: 8))
         }
-        MyTabNav()
     }
 }
 

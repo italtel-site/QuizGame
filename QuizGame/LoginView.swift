@@ -29,6 +29,9 @@ struct UserData {
         username = ""
         password = ""
     }
+    var notEmptyFields: Bool {
+        return username.isEmpty || password.isEmpty || nome.isEmpty || cognome.isEmpty || email.isEmpty
+    }
     
 }
 
