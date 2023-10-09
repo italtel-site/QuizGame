@@ -38,7 +38,7 @@ struct MyTabNav: View {
     }
 }
 
-struct titolo: View {
+struct Titolo: View {
     var titolo: String
     var body: some View {
         Text(titolo).font(.system(size: 45)).frame(maxWidth: .infinity, alignment: .leading).padding()

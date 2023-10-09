@@ -34,6 +34,7 @@ struct HomepageView: View {
     var body: some View {
         VStack {
             Text("QuizAR").font(.title)
+            
 
            if (checkGiorno()) {
                Text("Buongiorno, " + userValue.nome + "!").font(.title2)
