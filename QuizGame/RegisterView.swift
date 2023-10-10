@@ -39,11 +39,7 @@ struct RegisterView: View {
                
             }
           VStack(spacing: 50) {
-            Button("Pulisci") {
-              userValue.emptyFileds()
-            }
-              .foregroundColor(.green)
-              .disabled(userValue.notEmptyFields)
+
             NavigationLink(destination: LoginView()){
                 Text("Registrati")
                   .font(.title2)
