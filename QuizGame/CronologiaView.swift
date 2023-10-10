@@ -2,6 +2,42 @@
 
 import SwiftUI
 
+class Cronologia
+{
+    private var id: Int
+    private var orario: String
+    private var data: String
+    private var voto: Int
+
+    init(id: Int, voto: Int, data: String, orario:String)
+    {
+        self.id = id
+        self.voto = voto
+        self.data = data
+        self.orario = orario
+    }
+
+    var id: Int
+    {
+        return self.id
+    }
+
+    var voto: Int
+    {
+        return self.voto
+    }
+
+    var orario: String
+    {
+        return self.orario
+    }
+
+    var data: String
+    {
+        return self.data
+    }
+}
+
 struct Risultati: View {
     var data: String
     var orario: String
@@ -54,6 +90,18 @@ struct Sommario: View {
 }
 
 struct CronologiaView: View {
+
+    var cronologie: [Cronologia] = [
+        Cronologia(id: 1, voto: 24, data: "09/10/2023", orario: "9:20"),
+        Cronologia(id: 2, voto: 24, data: "09/10/2023", orario: "10:15"),
+        Cronologia(id: 3, voto: 15, data: "08/10/2023", orario: "11:30"),
+        Cronologia(id: 4, voto: 25, data: "07/10/2023", orario: "10:50"),
+        Cronologia(id: 5, voto: 21, data: "06/10/2023", orario: "15:05"),
+        Cronologia(id: 6, voto: 30, data: "05/10/2023", orario: "17:17"),
+        Cronologia(id: 7, voto: 12, data: "01/10/2023", orario: "10:25"),
+        Cronologia(id: 8, voto: 18, data: "01/10/2023", orario: "10:30")
+        ]
+
     var body: some View {
         
         VStack()
@@ -66,18 +114,13 @@ struct CronologiaView: View {
             }
             .padding(15)
             
-            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 15)
+            VStack(alignment .center, spacing: 15)
             {
                 ScrollView
                 {
-                    Risultati(data: "09/10/2023", orario: "10:30", immagine: "arrow.right", voto: 24);
-                    Risultati(data: "09/10/2023", orario: "10:30", immagine: "arrow.right", voto: 24)
-                    Risultati(data: "09/10/2023", orario: "10:30", immagine: "arrow.right", voto: 15)
-                    Risultati(data: "09/10/2023", orario: "10:30", immagine: "arrow.right", voto: 25)
-                    Risultati(data: "09/10/2023", orario: "10:30", immagine: "arrow.right", voto: 21)
-                    Risultati(data: "09/10/2023", orario: "10:30", immagine: "arrow.right", voto: 30)
-                    Risultati(data: "09/10/2023", orario: "10:30", immagine: "arrow.right", voto: 12)
-                    Risultati(data: "09/10/2023", orario: "10:30", immagine: "arrow.right", voto: 18)
+                    ForEach(cronologie, id: \.id){ cronologia in
+                        Risultati(data: cronologia.data, orario: cronologia.orario, immagine: "arrow.right", voto: cronologia.voto)
+                    }
                 }
             }.padding(15)
         }
