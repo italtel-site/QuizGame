@@ -14,6 +14,7 @@ struct SingleSubject{
 }
 
 struct SubjectStyle : View{
+    var value: SingleSubject
   var body : some View {
     NavigationLink(destination: RegisterView()){
       Spacer()
@@ -34,7 +35,7 @@ struct SubjectsList: View {
       ScrollView{
         LazyVGrid(columns: columns){
             ForEach(subjects, id: \.index){
-              value in SubjectStyle(value)
+                value in SubjectStyle(value: value)
           }
         }
       }

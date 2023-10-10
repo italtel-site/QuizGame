@@ -33,7 +33,7 @@ struct HomepageView: View {
     @State var userValue = UserData(nome: "Prova")
     var body: some View {
         VStack {
-            Titolo("QuizAR")
+            Titolo(titolo: "QuizAR")
 
            if (checkGiorno()) {
                Text("Buongiorno, " + userValue.nome + "!").font(.title2)
@@ -53,7 +53,7 @@ struct HomepageView: View {
 
             Button(action: {}){
                 VStack {
-                    Image(systemName: play.fill)
+                    Image(systemName: "play.fill")
                     Text("Avvia nuova simulazione").font(.title2)
                 }
             }.padding()
@@ -62,7 +62,7 @@ struct HomepageView: View {
 
             Button(action: {}) {
                 HStack{
-                    Image(systemName: hammer.fill)
+                    Image(systemName: "hammer.fill")
                     Text("Esercitati senza limiti di tempo").font(.body)
                 }
             }.cornerRadius(12)

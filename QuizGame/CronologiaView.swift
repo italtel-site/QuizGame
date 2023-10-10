@@ -17,22 +17,22 @@ class Cronologia
         self.orario = orario
     }
 
-    var id: Int
+    var Id: Int
     {
         return self.id
     }
 
-    var voto: Int
+    var Voto: Int
     {
         return self.voto
     }
 
-    var orario: String
+    var Orario: String
     {
         return self.orario
     }
 
-    var data: String
+    var Data: String
     {
         return self.data
     }
@@ -90,7 +90,7 @@ struct Sommario: View {
 }
 
 struct CronologiaView: View {
-
+    
     var cronologie: [Cronologia] = [
         Cronologia(id: 1, voto: 24, data: "09/10/2023", orario: "9:20"),
         Cronologia(id: 2, voto: 24, data: "09/10/2023", orario: "10:15"),
@@ -99,27 +99,46 @@ struct CronologiaView: View {
         Cronologia(id: 5, voto: 21, data: "06/10/2023", orario: "15:05"),
         Cronologia(id: 6, voto: 30, data: "05/10/2023", orario: "17:17"),
         Cronologia(id: 7, voto: 12, data: "01/10/2023", orario: "10:25"),
-        Cronologia(id: 8, voto: 18, data: "01/10/2023", orario: "10:30")
+        Cronologia(id: 8, voto: 18, data: "01/10/2023", orario: "10:30"),
+        Cronologia(id: 9, voto: 22, data: "30/09/2023", orario: "10:40")
         ]
+    
+    var totaleSimulazioni: Int
+    {
+        return cronologie.count
+    }
+    
+    func totaleSimulazioniPassate() -> Int
+    {
+        var contatore: Int = 0
+        for dato in cronologie
+        {
+            if (dato.Voto >= 18)
+            {
+                contatore = contatore + 1
+            }
+        }
+        
+        return contatore
+    }
 
     var body: some View {
-        
         VStack()
         {
             Titolo(titolo: "Cronologia")
             HStack(spacing: 20)
             {
-                Sommario(testo: "Simulazioni completate", totale: 11)
-                Sommario(testo: "Simulazioni passate", totale: 7)
+                Sommario(testo: "Simulazioni completate", totale: totaleSimulazioni)
+                Sommario(testo: "Simulazioni passate", totale: totaleSimulazioniPassate())
             }
             .padding(15)
             
-            VStack(alignment .center, spacing: 15)
+            VStack(alignment: .center, spacing: 15)
             {
                 ScrollView
                 {
-                    ForEach(cronologie, id: \.id){ cronologia in
-                        Risultati(data: cronologia.data, orario: cronologia.orario, immagine: "arrow.right", voto: cronologia.voto)
+                    ForEach(cronologie, id: \.Id){ cronologia in
+                        Risultati(data: cronologia.Data, orario: cronologia.Orario, immagine: "arrow.right", voto: cronologia.Voto)
                     }
                 }
             }.padding(15)
