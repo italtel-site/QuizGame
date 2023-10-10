@@ -17,6 +17,7 @@
 		DD106E792ACACCC000D813B2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD106E782ACACCC000D813B2 /* LoginView.swift */; };
 		DD59EFA52AD3ED170094FB7B /* CronologiaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD59EFA42AD3ED170094FB7B /* CronologiaView.swift */; };
 		DD59EFA72AD400650094FB7B /* SubjectsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD59EFA62AD400650094FB7B /* SubjectsList.swift */; };
+		DDC31C462AD5A0720038501A /* DettagliSimulazioneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC31C452AD5A0720038501A /* DettagliSimulazioneView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		DD106E782ACACCC000D813B2 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DD59EFA42AD3ED170094FB7B /* CronologiaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronologiaView.swift; sourceTree = "<group>"; };
 		DD59EFA62AD400650094FB7B /* SubjectsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectsList.swift; sourceTree = "<group>"; };
+		DDC31C452AD5A0720038501A /* DettagliSimulazioneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DettagliSimulazioneView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		DD106E492ACAB42A00D813B2 /* QuizGame */ = {
 			isa = PBXGroup;
 			children = (
+				DDC31C452AD5A0720038501A /* DettagliSimulazioneView.swift */,
 				DD59EFA62AD400650094FB7B /* SubjectsList.swift */,
 				DD59EFA42AD3ED170094FB7B /* CronologiaView.swift */,
 				DD106E782ACACCC000D813B2 /* LoginView.swift */,
@@ -162,6 +165,7 @@
 				DD59EFA72AD400650094FB7B /* SubjectsList.swift in Sources */,
 				DD0879492ACF0C7E00427AC3 /* RegisterView.swift in Sources */,
 				DD106E792ACACCC000D813B2 /* LoginView.swift in Sources */,
+				DDC31C462AD5A0720038501A /* DettagliSimulazioneView.swift in Sources */,
 				DD106E4B2ACAB42A00D813B2 /* QuizGameApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -45,8 +45,8 @@ struct Risultati: View {
     var voto: Int
     
     var body: some View {
-        Button(action:{
-        }){
+        NavigationLink(destination: DettagliSimulazioneView())
+        {
             HStack()
             {
                 VStack(alignment: .leading, spacing: 5)
@@ -123,25 +123,29 @@ struct CronologiaView: View {
     }
 
     var body: some View {
-        VStack()
+        
+        NavigationStack
         {
-            Titolo(titolo: "Cronologia")
-            HStack(spacing: 20)
+            VStack()
             {
-                Sommario(testo: "Simulazioni completate", totale: totaleSimulazioni)
-                Sommario(testo: "Simulazioni passate", totale: totaleSimulazioniPassate())
-            }
-            .padding(15)
-            
-            VStack(alignment: .center, spacing: 15)
-            {
-                ScrollView
+                Titolo(titolo: "Cronologia")
+                HStack(spacing: 20)
                 {
-                    ForEach(cronologie, id: \.Id){ cronologia in
-                        Risultati(data: cronologia.Data, orario: cronologia.Orario, immagine: "arrow.right", voto: cronologia.Voto)
-                    }
+                    Sommario(testo: "Simulazioni completate", totale: totaleSimulazioni)
+                    Sommario(testo: "Simulazioni passate", totale: totaleSimulazioniPassate())
                 }
-            }.padding(15)
+                .padding(15)
+                
+                VStack(alignment: .center, spacing: 15)
+                {
+                    ScrollView
+                    {
+                        ForEach(cronologie, id: \.Id){ cronologia in
+                            Risultati(data: cronologia.Data, orario: cronologia.Orario, immagine: "arrow.right", voto: cronologia.Voto)
+                        }
+                    }
+                }.padding(15)
+            }
         }
         //MyTabNav()
     }
