@@ -2,40 +2,12 @@
 
 import SwiftUI
 
-class Cronologia
+struct Cronologia
 {
-    private var id: Int
-    private var orario: String
-    private var data: String
-    private var voto: Int
-
-    init(id: Int, voto: Int, data: String, orario:String)
-    {
-        self.id = id
-        self.voto = voto
-        self.data = data
-        self.orario = orario
-    }
-
-    var Id: Int
-    {
-        return self.id
-    }
-
-    var Voto: Int
-    {
-        return self.voto
-    }
-
-    var Orario: String
-    {
-        return self.orario
-    }
-
-    var Data: String
-    {
-        return self.data
-    }
+    var id: Int
+    var voto: Int
+    var data: String
+    var orario: String
 }
 
 struct Risultati: View {
@@ -113,7 +85,7 @@ struct CronologiaView: View {
         var contatore: Int = 0
         for dato in cronologie
         {
-            if (dato.Voto >= 18)
+            if (dato.voto >= 18)
             {
                 contatore = contatore + 1
             }
@@ -140,8 +112,8 @@ struct CronologiaView: View {
                 {
                     ScrollView
                     {
-                        ForEach(cronologie, id: \.Id){ cronologia in
-                            Risultati(data: cronologia.Data, orario: cronologia.Orario, immagine: "arrow.right", voto: cronologia.Voto)
+                        ForEach(cronologie, id: \.id){ cronologia in
+                            Risultati(data: cronologia.data, orario: cronologia.orario, immagine: "arrow.right", voto: cronologia.voto)
                         }
                     }
                 }.padding(15)
