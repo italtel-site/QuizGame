@@ -17,7 +17,7 @@ struct Risultati: View {
     var voto: Int
     
     var body: some View {
-        NavigationLink(destination: DettagliSimulazioneView())
+        NavigationLink(destination: DettagliSimulazioneView(votoFinale: voto))
         {
             HStack()
             {

@@ -1,0 +1,72 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld" : {
+
+    },
+    "%lld) Domanda" : {
+
+    },
+    "%lld/30" : {
+
+    },
+    "120" : {
+
+    },
+    "Avvia nuova simulazione" : {
+
+    },
+    "Avvia Simulazione" : {
+
+    },
+    "Cronologia" : {
+
+    },
+    "Dati di login" : {
+
+    },
+    "Dati personali" : {
+
+    },
+    "Esercitati senza limiti di tempo" : {
+
+    },
+    "giorni alla prova" : {
+
+    },
+    "Home" : {
+
+    },
+    "Impostazioni" : {
+
+    },
+    "Impostazioni e profilo" : {
+
+    },
+    "Login" : {
+
+    },
+    "Materie" : {
+
+    },
+    "Pulisci" : {
+
+    },
+    "QuizAR" : {
+
+    },
+    "Registrati" : {
+
+    },
+    "Rimangono" : {
+
+    },
+    "Risultati precedenti" : {
+
+    },
+    "Scegli l’unità d’esame" : {
+
+    }
+  },
+  "version" : "1.0"
+}

@@ -60,11 +60,22 @@ struct Risposte: View {
 }
 
 struct DettagliSimulazioneView: View {
-    var votoFinale: Int = 25
+    var votoFinale: Int
+    
+    init ()
+    {
+        self.votoFinale = 0
+    }
+    
+    init(votoFinale: Int)
+    {
+        self.votoFinale = votoFinale
+    }
+    
     var body: some View {
         VStack
         {
-            Titolo(titolo: "Simulazione")
+            Titolo(titolo: "Esame")
             if votoFinale >= 18
             {
                 Intestazione(testo: "Promosso" , voto: votoFinale, immagine: "")
