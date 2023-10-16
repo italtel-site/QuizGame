@@ -47,20 +47,22 @@ struct SubjectsList: View {
   var subjects = [SingleSubject(index: "1",icon: "globe",SBJtext: "UFS01"),SingleSubject(index: "2",icon: "globe",SBJtext: "UFS01"),SingleSubject(index: "3",icon: "globe",SBJtext: "UFS01"),SingleSubject(index: "4",icon: "globe",SBJtext: "UFS01"),SingleSubject(index: "5",icon: "globe",SBJtext: "UFS01"),SingleSubject(index: "6",icon: "globe",SBJtext: "UFS01"),SingleSubject(index: "7",icon: "globe",SBJtext: "UFS01"),SingleSubject(index: "8",icon: "globe",SBJtext: "UFS01"),SingleSubject(index: "9",icon: "globe",SBJtext: "UFS01"),SingleSubject(index: "10",icon: "globe",SBJtext: "UFS01"),SingleSubject(index: "11",icon: "globe",SBJtext: "UFS01")]
   
   var body: some View {
-      Titolo(titolo: 	"Materie")
-      Text("Scegli l’unità d’esame")
-          .font(.title2)
-          .padding(.bottom,20)
-      NavigationStack{
-          ScrollView{
-              LazyVGrid(columns: columns,spacing: 20){
-                  ForEach(subjects, id: \.index){
-                      value in 
-                    SubjectStyle(value: value)
+      VStack{
+          Titolo(titolo: 	"Materie")
+          Text("Scegli l’unità d’esame")
+              .font(.title2)
+              .padding(.bottom,20)
+          NavigationStack{
+              ScrollView{
+                  LazyVGrid(columns: columns,spacing: 20){
+                      ForEach(subjects, id: \.index){
+                          value in
+                          SubjectStyle(value: value)
+                      }
+                  }
+              }
           }
-        }
       }
-    }
   }
 }
 

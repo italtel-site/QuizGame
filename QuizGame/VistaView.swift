@@ -9,7 +9,35 @@ import SwiftUI
 
 struct VistaView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack
+        {
+            TabView
+            {
+                Text("Simulazione")
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+                    .tabItem {
+                        Image(systemName: "play.circle.fill")
+                        Text("Home")
+                    }
+                Text("Materie")
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+                .tabItem {
+                Image(systemName: "book.circle.fill")
+                Text("Materie")
+                }
+                CronologiaView()
+                .tabItem {
+                Image(systemName: "timer.circle.fill")
+                Text("Cronologia")
+                }
+                Text("Impostazioni e profilo")
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+                .tabItem {
+                Image(systemName: "gear.circle.fill")
+                Text("Impostazioni")
+                }
+            }
+        }
     }
 }
 

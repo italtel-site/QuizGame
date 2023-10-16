@@ -64,7 +64,7 @@ struct Sommario: View {
 struct CronologiaView: View {
     
     var cronologie: [Cronologia] = [
-        Cronologia(id: 1, voto: 24, data: "09/10/2023", orario: "9:20"),
+        Cronologia(id: 1, voto: 24, data: "09/10/2023", orario: "09:20"),
         Cronologia(id: 2, voto: 24, data: "09/10/2023", orario: "10:15"),
         Cronologia(id: 3, voto: 15, data: "08/10/2023", orario: "11:30"),
         Cronologia(id: 4, voto: 25, data: "07/10/2023", orario: "10:50"),

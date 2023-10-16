@@ -61,26 +61,29 @@ struct MyTextField: View {
 struct LoginView: View {
     @State var userValue = UserData(nome: "", cognome: "")
     var body: some View {
-        VStack {
-            Image("ITSARicon")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 250)
-                .padding(.vertical)
-            MyTextField(withIcon: "person.fill", textValue: $userValue.username,
-            isMandatory: true, textHint: "username")
-            MyTextField(withIcon: "key.fill", textValue: $userValue.password,
-            isMandatory: true, isSecret: true, textHint: "password")
-        HStack(spacing: 50) {
-            Button("Login") {
-            //WebService to call
-            }.foregroundColor(.purple)
-            .disabled(userValue.checkLogin)
-
-            Button("Pulisci") {
-            userValue.emptyFileds()
-            }.foregroundColor(.green)
-                .disabled(userValue.checkReset)
+        NavigationStack{
+            VStack {
+                Image("ITSARicon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 250)
+                    .padding(.vertical)
+                MyTextField(withIcon: "person.fill", textValue: $userValue.username,
+                            isMandatory: true, textHint: "username")
+                MyTextField(withIcon: "key.fill", textValue: $userValue.password,
+                            isMandatory: true, isSecret: true, textHint: "password")
+                HStack(spacing: 50) {
+                    NavigationLink(destination: MenuView().navigationBarBackButtonHidden(true)){
+                        Text("Login")
+                    }
+                        .foregroundColor(.purple)
+                        .disabled(userValue.checkLogin)
+                    
+                    Button("Pulisci") {
+                        userValue.emptyFileds()
+                    }.foregroundColor(.green)
+                        .disabled(userValue.checkReset)
+                }
             }
         }
     }

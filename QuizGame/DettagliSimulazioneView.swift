@@ -29,6 +29,12 @@ struct Intestazione: View
     }
 }
 
+struct Domanda
+{
+    var numDomanda: Int
+    var stato: Bool
+}
+
 struct Risposte: View {
     var numDomanda: Int
     var stato: Bool
@@ -60,6 +66,40 @@ struct Risposte: View {
 }
 
 struct DettagliSimulazioneView: View {
+    
+    var domande: [Domanda] = 
+    [
+        Domanda(numDomanda: 1, stato: true),
+        Domanda(numDomanda: 2, stato: true),
+        Domanda(numDomanda: 3, stato: false),
+        Domanda(numDomanda: 4, stato: true),
+        Domanda(numDomanda: 5, stato: false),
+        Domanda(numDomanda: 6, stato: true),
+        Domanda(numDomanda: 7, stato: true),
+        Domanda(numDomanda: 8, stato: false),
+        Domanda(numDomanda: 9, stato: true),
+        Domanda(numDomanda: 10, stato: true),
+        Domanda(numDomanda: 11, stato: true),
+        Domanda(numDomanda: 12, stato: false),
+        Domanda(numDomanda: 13, stato: true),
+        Domanda(numDomanda: 14, stato: false),
+        Domanda(numDomanda: 15, stato: false),
+        Domanda(numDomanda: 16, stato: false),
+        Domanda(numDomanda: 17, stato: true),
+        Domanda(numDomanda: 18, stato: false),
+        Domanda(numDomanda: 19, stato: true),
+        Domanda(numDomanda: 20, stato: false),
+        Domanda(numDomanda: 21, stato: false),
+        Domanda(numDomanda: 22, stato: true),
+        Domanda(numDomanda: 23, stato: false),
+        Domanda(numDomanda: 24, stato: false),
+        Domanda(numDomanda: 25, stato: true),
+        Domanda(numDomanda: 26, stato: false),
+        Domanda(numDomanda: 27, stato: false),
+        Domanda(numDomanda: 28, stato: true),
+        Domanda(numDomanda: 29, stato: false),
+        Domanda(numDomanda: 30, stato: false)
+    ]
     var votoFinale: Int
     
     init ()
@@ -89,18 +129,9 @@ struct DettagliSimulazioneView: View {
             {
                 ScrollView
                 {
-                    Risposte(numDomanda: 1, stato: true)
-                    Risposte(numDomanda: 2, stato: true)
-                    Risposte(numDomanda: 3, stato: false)
-                    Risposte(numDomanda: 4, stato: true)
-                    Risposte(numDomanda: 5, stato: false)
-                    Risposte(numDomanda: 6, stato: true)
-                    Risposte(numDomanda: 7, stato: true)
-                    Risposte(numDomanda: 8, stato: false)
-                    Risposte(numDomanda: 9, stato: true)
-                    Risposte(numDomanda: 10, stato: true)
-                    Risposte(numDomanda: 11, stato: true)
-                    Risposte(numDomanda: 12, stato: false)
+                    ForEach(domande, id: \.numDomanda){ domanda in
+                        Risposte(numDomanda: domanda.numDomanda, stato: domanda.stato)
+                    }
                 }
             }
             .padding()

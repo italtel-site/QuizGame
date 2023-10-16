@@ -10,20 +10,17 @@ import SwiftUI
 struct MyTabNav: View {
     var body: some View {
         TabView{
-            Text("Avvia Simulazione")
-            .font(.system(size: 30, weight: .bold, design: .rounded))
-                .tabItem {
+            HomepageView()
+            .tabItem {
                     Image(systemName: "play.circle.fill")
                     Text("Home")
                 }
-            Text("Materie")
-            .font(.system(size: 30, weight: .bold, design: .rounded))
+            SubjectsList()
             .tabItem {
             Image(systemName: "book.circle.fill")
             Text("Materie")
             }
-            Text("Risultati precedenti")
-            .font(.system(size: 30, weight: .bold, design: .rounded))
+            CronologiaView()
             .tabItem {
             Image(systemName: "timer.circle.fill")
             Text("Cronologia")
@@ -38,6 +35,8 @@ struct MyTabNav: View {
     }
 }
 
+
+
 struct Titolo: View {
     var titolo: String
     var body: some View {
@@ -46,11 +45,20 @@ struct Titolo: View {
 }
 
 struct ContentView: View {
+    var logged = false
+    
     var body: some View {
-        VStack {
-            LaunchView()
+        if logged{
+            VStack{
+                MenuView()
+            }
         }
-        .padding()
+        else{
+            VStack {
+                LaunchView()
+            }
+            .padding()
+        }
     }
 }
 
