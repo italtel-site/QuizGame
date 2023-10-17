@@ -44,7 +44,7 @@ struct Risposte: View {
     }
     
     var body: some View {
-        NavigationLink(destination: DettagliSimulazioneView())
+        NavigationLink(destination: RispostaView(idDomanda: numDomanda))
         {
             HStack()
             {
