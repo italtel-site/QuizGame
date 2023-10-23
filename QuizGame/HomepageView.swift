@@ -32,44 +32,75 @@ func checkGiorno() -> Bool {
 struct HomepageView: View {
     @State var userValue = UserData(nome: "Prova")
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             Titolo(titolo: "QuizAR")
-
+    
            if (checkGiorno()) {
-               Text("Buongiorno, " + userValue.nome + "!").font(.title2)
+               Text("Buongiorno, " + userValue.nome + "!").font(.title)
+                   .frame(maxWidth: .infinity, alignment: .leading)
+                   .padding(.leading)
+                   .padding(.bottom)
            }
 
            else{
-               Text("Buonasera, " + userValue.nome + "!").font(.title2)
+               Text("Buonasera, " + userValue.nome + "!").font(.title)
+                   .frame(maxWidth: .infinity, alignment: .leading)
+                   .padding(.leading)
+                   .padding(.bottom)
            }
-
-            VStack {
-                Text("Rimangono").font(.title2)
-                Text("120").font(.system(size: 45 ,weight: .bold))
-                Text("giorni alla prova").font(.title2)
-            }.padding()
-            .background(Color.red)
-            .cornerRadius(12)
-
-            Button(action: {}){
-                VStack {
-                    Image(systemName: "play.fill")
-                    Text("Avvia nuova simulazione").font(.title2)
-                }
-            }.padding()
-            .background(Color.red)
-            .cornerRadius(12)
-
+            
+            VStack(spacing: 50) {
+                VStack(spacing: 10) {
+                    Text("Rimangono").font(.title2)
+                    Text("120").font(.system(size: 60 ,weight: .bold))
+                    Text("giorni alla prova").font(.title2)
+                    
+                }.frame(maxWidth: 300, maxHeight: 150)
+                .padding()
+                .background(Color.red)
+                .cornerRadius(12)
+            
+                
+                
+                
+                Button(action: {}){
+                    VStack {
+                        Image(systemName: "play.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50)
+                        Text("Avvia nuova simulazione").font(.title2)
+                    }
+                }.frame(maxWidth: 300, maxHeight: 150)
+                .padding()
+                .background(Color.red)
+                .cornerRadius(12)
+                
+            }.fixedSize(horizontal: false, vertical: false)
+            .frame(maxHeight: 400)
+    
             Button(action: {}) {
                 HStack{
                     Image(systemName: "hammer.fill")
                     Text("Esercitati senza limiti di tempo").font(.body)
                 }
-            }.cornerRadius(12)
+            }
+            .frame(maxWidth: 300)
+            .padding()
+            .background(Color.gray)
+            .cornerRadius(12)
+            Spacer()
         }
+        .frame(maxWidth: .infinity)
     }
 }
 
-#Preview {
+/*#Preview {
     HomepageView()
+}*/
+
+struct HomepageView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomepageView()
+    }
 }

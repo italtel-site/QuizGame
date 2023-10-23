@@ -37,7 +37,13 @@ struct LaunchView: View {
     }
 }
 
-#Preview {
+/*#Preview {
     LaunchView()
+}*/
+
+struct LaunchView_Previews: PreviewProvider {
+    static var previews: some View {
+        LaunchView()
+    }
 }
-	
+    

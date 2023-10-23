@@ -7,7 +7,81 @@
 
 import SwiftUI
 
-struct Intestazione: View 
+struct DomandaEsame
+{
+    var id: Int
+    var descrizione: String
+}
+
+struct RispoteEsame
+{
+    var id: Int
+    var descrizione: String
+    var stato: Bool
+    var id_domanda: Int
+}
+
+struct RispostaView: View {
+    var idDomanda: Int
+    var stato: Bool
+    var idRisposta: Int
+    
+    var domandeEsame: [DomandaEsame] = [DomandaEsame(id: 1, descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?")]
+    var risposteEsame: [RispoteEsame] =
+    [
+        RispoteEsame(id: 1, descrizione: "Java", stato: false, id_domanda: 1),
+        RispoteEsame(id: 2, descrizione: "Query", stato: false, id_domanda: 1),
+        RispoteEsame(id: 3, descrizione: "SQL", stato: true, id_domanda: 1),
+        RispoteEsame(id: 4, descrizione: "Javascript", stato: false, id_domanda:1)
+    ]
+
+    var body: some View {
+        VStack()
+        {
+            Titolo(titolo: "Risposta")
+            VStack(alignment: .leading, spacing: 30)
+            {
+                ForEach(domandeEsame, id: \.id){ domanda in
+                    Text("\(idDomanda)) " + domanda.descrizione).font(.system(size: 20))
+                }
+                
+                VStack(alignment: .leading, spacing: 10)
+                {
+                    ForEach(risposteEsame, id: \.id){ risposta in
+                        
+                        if risposta.id == idRisposta
+                        {
+                            Text("Risposta tua: " + risposta.descrizione).font(.system(size: 20))
+                                .foregroundColor(risposta.stato ? .green : .red)
+                        }
+                    }
+                    
+                    ForEach(risposteEsame, id: \.id){ risposta in
+                        
+                        if(risposta.stato == true)
+                        {
+                            Text("Risposta corretta: " + risposta.descrizione).font(.system(size: 20))
+                        }
+                    }
+                }
+
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .overlay(RoundedRectangle(cornerRadius: 15)
+                .stroke(.black, lineWidth: 1.5))
+        }
+        .padding()
+        
+    }
+}
+
+
+
+
+
+
+struct Intestazione: View
 {
     var testo: String
     var voto: Int
@@ -44,17 +118,17 @@ struct Risposte: View {
     }
     
     var body: some View {
-        NavigationLink(destination: RispostaView(idDomanda: numDomanda))
+        NavigationLink(destination: RispostaView(idDomanda: numDomanda, stato: stato, idRisposta: 2))
         {
             HStack()
             {
-                Text("\(numDomanda)) Domanda").font(.system(size: 18)).foregroundColor(.black)
+                Text("\(numDomanda)) Domanda").font(.system(size: 16)).foregroundColor(.black)
                 Spacer()
-                Text("Risposta: " + parola).font(.system(size: 18)).padding(.horizontal, 5).foregroundColor(.black)
+                Text("Risposta: " + parola).font(.system(size: 16)).padding(.horizontal, 5).foregroundColor(.black)
                 Image(systemName: "arrow.right")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 18)
+                    .frame(width: 16)
                     .foregroundColor(.black)
             }
             .frame(maxWidth: .infinity)
@@ -67,7 +141,7 @@ struct Risposte: View {
 
 struct DettagliSimulazioneView: View {
     
-    var domande: [Domanda] = 
+    var domande: [Domanda] =
     [
         Domanda(numDomanda: 1, stato: true),
         Domanda(numDomanda: 2, stato: true),
@@ -86,19 +160,19 @@ struct DettagliSimulazioneView: View {
         Domanda(numDomanda: 15, stato: false),
         Domanda(numDomanda: 16, stato: false),
         Domanda(numDomanda: 17, stato: true),
-        Domanda(numDomanda: 18, stato: false),
+        Domanda(numDomanda: 18, stato: true),
         Domanda(numDomanda: 19, stato: true),
         Domanda(numDomanda: 20, stato: false),
         Domanda(numDomanda: 21, stato: false),
         Domanda(numDomanda: 22, stato: true),
         Domanda(numDomanda: 23, stato: false),
-        Domanda(numDomanda: 24, stato: false),
+        Domanda(numDomanda: 24, stato: true),
         Domanda(numDomanda: 25, stato: true),
         Domanda(numDomanda: 26, stato: false),
-        Domanda(numDomanda: 27, stato: false),
+        Domanda(numDomanda: 27, stato: true),
         Domanda(numDomanda: 28, stato: true),
         Domanda(numDomanda: 29, stato: false),
-        Domanda(numDomanda: 30, stato: false)
+        Domanda(numDomanda: 30, stato: true)
     ]
     var votoFinale: Int
     
@@ -139,6 +213,12 @@ struct DettagliSimulazioneView: View {
     }
 }
 
-#Preview {
+/*#Preview {
     DettagliSimulazioneView()
+}*/
+
+struct DettagliSimulazioneView_Previews: PreviewProvider {
+    static var previews: some View {
+        DettagliSimulazioneView()
+    }
 }

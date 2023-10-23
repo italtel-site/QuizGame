@@ -13,6 +13,15 @@ struct MenuView: View {
     }
 }
 
+/*
 #Preview {
     MenuView()
 }
+*/
+
+struct MenuView_Previews: PreviewProvider {
+    static var previews: some View {
+        MenuView()
+    }
+}
+

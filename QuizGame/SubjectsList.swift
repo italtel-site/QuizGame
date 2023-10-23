@@ -66,6 +66,13 @@ struct SubjectsList: View {
   }
 }
 
-#Preview {
+
+/*#Preview {
   SubjectsList()
+}*/
+
+struct SubjectList_Previews: PreviewProvider {
+    static var previews: some View {
+        SubjectsList()
+    }
 }

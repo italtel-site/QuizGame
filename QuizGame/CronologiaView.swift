@@ -123,6 +123,12 @@ struct CronologiaView: View {
     }
 }
 
-#Preview {
+/*#Preview {
     CronologiaView()
+}*/
+
+struct CronologiaView_Previews: PreviewProvider {
+    static var previews: some View {
+        CronologiaView()
+    }
 }
