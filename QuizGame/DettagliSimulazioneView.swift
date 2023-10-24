@@ -1,30 +1,4 @@
-//
-//  DettagliSimulazioneView.swift
-//  QuizGame
-//
-//  Created by user243551 on 10/10/23.
-//
-
 import SwiftUI
-
-struct DomandaEsame
-{
-    var id: Int
-    var descrizione: String
-}
-
-struct RispoteEsame
-{
-    var id: Int
-    var descrizione: String
-    var stato: Bool
-    var id_domanda: Int
-}
-
-
-
-
-
 
 struct Intestazione: View
 {
