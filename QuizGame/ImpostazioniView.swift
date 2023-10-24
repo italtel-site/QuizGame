@@ -9,7 +9,33 @@ import SwiftUI
 
 struct ImpostazioniView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 20) {
+            Titolo(titolo: "Impostazioni")
+
+            Text("Modifica Profilo").frame(maxWidth: .infinity, alignment: .leading)
+            Text("Cambia Password").frame(maxWidth: .infinity, alignment: .leading)
+            Text("Reset").frame(maxWidth: .infinity, alignment: .leading)
+
+            VStack {
+                Image("ITSARicon")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 250)
+                        .padding(.vertical)
+                Text("UFS14 - Progettazione e Sviluppo iOS")
+                Text("QuizAR - Abou, Frigerio, Scarafoni")
+            }
+
+            NavigationLink(destination: LoginView().navigationBarBackButtonHidden(true)){
+                        Text("Logout")
+                    }
+                    .padding()
+                    .foregroundColor(Color.white)
+                    .background(Color.red)
+                    .cornerRadius(12)
+                        
+
+        }
     }
 }
 
