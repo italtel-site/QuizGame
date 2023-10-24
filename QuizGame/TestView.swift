@@ -22,7 +22,7 @@ struct QuestionView: View{
         VStack{
             Text(singleQuestion.descrizione)
             
-        }.padding().frame().overlay(RoundedRectangle(cornerRadius: 8))
+        }.padding().overlay(RoundedRectangle(cornerRadius: 8))
     }
 }
 
