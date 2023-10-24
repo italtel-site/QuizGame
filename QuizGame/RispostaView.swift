@@ -1,19 +1,15 @@
 import SwiftUI
 
-struct DomandaEsame
-{
+struct DomandaEsame{
     var id: Int
     var descrizione: String
 }
-
-struct RispoteEsame
-{
+struct RispoteEsame{
     var id: Int
     var descrizione: String
     var stato: Bool
     var id_domanda: Int
 }
-
 struct RispostaView: View {
     var idDomanda: Int
     var stato: Bool
@@ -28,7 +24,7 @@ struct RispostaView: View {
         RispoteEsame(id: 4, descrizione: "Javascript", stato: false, id_domanda:1)
     ]
 
-    var body: some View {
+    var body: some View {						
         VStack()
         {
             Titolo(titolo: "Risposta")

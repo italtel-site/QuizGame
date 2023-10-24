@@ -7,53 +7,106 @@
 
 import SwiftUI
 
-struct AnswerView: View{
-    var singleAnswer : RispoteEsame
-    
-    var body: some View{
-        Text("ciao")
-    }
+struct RispostaQuiz{
+    var id: Int
+    var risposta: String
+    var correctAnswer: Bool
 }
 
-struct QuestionView: View{
-    var singleQuestion : DomandaEsame
+struct DomandaQuiz {
+    var id: Int
+    var descrizione: String
+    var risposte: [RispostaQuiz]
+}
+
+struct DomandaView: View{
+    var domandaEsame: DomandaQuiz
     
     var body: some View{
         VStack{
-            Text(singleQuestion.descrizione)
-            
-        }.padding().overlay(RoundedRectangle(cornerRadius: 8))
+            Text(domandaEsame.descrizione)
+                .padding()
+                .overlay(RoundedRectangle(cornerRadius: 8).stroke(.black))
+        }
     }
 }
 
 
 struct TestView: View {
     
-    var domandeEsame: [DomandaEsame] = [
-        DomandaEsame(id: 1, descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?"),
-        DomandaEsame(id: 2, descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?"),
-        DomandaEsame(id: 3, descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?"),
-        DomandaEsame(id: 4, descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?"),
-        DomandaEsame(id: 5, descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?"),
-        DomandaEsame(id: 6, descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?"),
-        DomandaEsame(id: 7, descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?"),
-        DomandaEsame(id: 8, descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?")
+    var domandeEsame: [DomandaQuiz] = [
+        DomandaQuiz(
+            id: 1,
+            descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?",
+            risposte: [
+                RispostaQuiz(id: 1, risposta: "SQL", correctAnswer: true),
+                RispostaQuiz(id: 2, risposta: "Spring", correctAnswer: false),
+                RispostaQuiz(id: 3, risposta: "C#", correctAnswer: false),
+                RispostaQuiz(id: 4, risposta: "Java", correctAnswer: false)
+            ]
+        ),
+        DomandaQuiz(
+            id: 1,
+            descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?",
+            risposte: [
+                RispostaQuiz(id: 1, risposta: "SQL", correctAnswer: true),
+                RispostaQuiz(id: 2, risposta: "Spring", correctAnswer: false),
+                RispostaQuiz(id: 3, risposta: "C#", correctAnswer: false),
+                RispostaQuiz(id: 4, risposta: "Java", correctAnswer: false)
+            ]
+        ),
+        DomandaQuiz(
+            id: 1,
+            descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?",
+            risposte: [
+                RispostaQuiz(id: 1, risposta: "SQL", correctAnswer: true),
+                RispostaQuiz(id: 2, risposta: "Spring", correctAnswer: false),
+                RispostaQuiz(id: 3, risposta: "C#", correctAnswer: false),
+                RispostaQuiz(id: 4, risposta: "Java", correctAnswer: false)
+            ]
+        ),
+        DomandaQuiz(
+            id: 1,
+            descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?",
+            risposte: [
+                RispostaQuiz(id: 1, risposta: "SQL", correctAnswer: true),
+                RispostaQuiz(id: 2, risposta: "Spring", correctAnswer: false),
+                RispostaQuiz(id: 3, risposta: "C#", correctAnswer: false),
+                RispostaQuiz(id: 4, risposta: "Java", correctAnswer: false)
+            ]
+        ),
+        DomandaQuiz(
+            id: 1,
+            descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?",
+            risposte: [
+                RispostaQuiz(id: 1, risposta: "SQL", correctAnswer: true),
+                RispostaQuiz(id: 2, risposta: "Spring", correctAnswer: false),
+                RispostaQuiz(id: 3, risposta: "C#", correctAnswer: false),
+                RispostaQuiz(id: 4, risposta: "Java", correctAnswer: false)
+            ]
+        ),
+        DomandaQuiz(
+            id: 1,
+            descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?",
+            risposte: [
+                RispostaQuiz(id: 1, risposta: "SQL", correctAnswer: true),
+                RispostaQuiz(id: 2, risposta: "Spring", correctAnswer: false),
+                RispostaQuiz(id: 3, risposta: "C#", correctAnswer: false),
+                RispostaQuiz(id: 4, risposta: "Java", correctAnswer: false)
+            ]
+        )
     ]
-    var listaRisposteEsame: [RispoteEsame] = [
-        RispoteEsame(id: 1, descrizione: "Java", stato: false, id_domanda: 1),
-        RispoteEsame(id: 2, descrizione: "Query", stato: false, id_domanda: 2),
-        RispoteEsame(id: 3, descrizione: "SQL", stato: true, id_domanda: 3),
-        RispoteEsame(id: 4, descrizione: "Javascript", stato: false, id_domanda:4),
-        RispoteEsame(id: 5, descrizione: "Puthon", stato: false, id_domanda:7),
-        RispoteEsame(id: 6, descrizione: "CopyRight", stato: false, id_domanda:6),
-        RispoteEsame(id: 7, descrizione: "Swift", stato: false, id_domanda:5),
-        RispoteEsame(id: 8, descrizione: "Android", stato: false, id_domanda:8)
-    ]
+    
+
     var body: some View {
         TabView {
             ForEach(domandeEsame, id: \.id) { esame in
-                QuestionView(singleQuestion: esame)
+                DomandaView(domandaEsame: esame)
             }
+            .padding()
+            .overlay(RoundedRectangle(cornerRadius: 8)
+            .stroke(.black))
+
         }
         .tabViewStyle(PageTabViewStyle())
         .indexViewStyle(.page(backgroundDisplayMode: .always))    }
