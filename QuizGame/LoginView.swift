@@ -61,9 +61,11 @@ struct MyTextField: View {
 struct LoginView: View {
     @State var userValue = UserData(nome: "", cognome: "")
     @State private var readyToNavigate : Bool = false
+    @State private var controlloLogin: Bool = false
     var body: some View {
         NavigationStack{
-            VStack {
+            VStack(spacing: 20) {
+                
                 Image("ITSARicon")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -73,7 +75,7 @@ struct LoginView: View {
                             isMandatory: true, textHint: "username")
                 MyTextField(withIcon: "key.fill", textValue: $userValue.password,
                             isMandatory: true, isSecret: true, textHint: "password")
-                HStack(spacing: 50) {
+               
                     /*NavigationLink(destination: MenuView().navigationBarBackButtonHidden(true)){
                         Text("Login")
                     }
@@ -85,25 +87,44 @@ struct LoginView: View {
                     }.foregroundColor(.green)
                         .disabled(userValue.checkReset)*/
 
-                    NavigationStack {
-                        VStack {
+                    
+                VStack() {
                             Button {
+                                RegisteredUsers.getUsers()
                                 for user in RegisteredUsers.users {
-                                    if(user.username == $userValue.username && user.password == $userValue.password) {
+                                    if(user.username == userValue.username && user.password == userValue.password) {
                                         readyToNavigate = true
-                                        break 
+                                        controlloLogin = false
+                                        break
                                     }
+                                    controlloLogin = true
                                 }
                             } label: {
-                                Text("Navigate Button")
-                            }
+                                Text("Login")
+                            }.frame(maxWidth: 80)
+                            .padding()
+                            .padding(.horizontal)
+                            .background(Color.red)
+                            .cornerRadius(10)
+                            .foregroundColor(.white)
+                            
+                            Text(controlloLogin ? "Username o password errato" : "" )
+                            
+                            NavigationLink(destination: RegisterView()) {
+                                Text("Registrati")
+                            }.frame(maxWidth: 80)
+                            .padding()
+                            .padding(.horizontal)
+                            .background(Color.orange)
+                            .cornerRadius(10)
+                            .foregroundColor(.white)
                         }
-                        .navigationTitle("Navigation")
                         .navigationDestination(isPresented: $readyToNavigate) {
-                            HomepageView()
+                            MenuView().navigationBarBackButtonHidden(true)
                         }
-                    }
-                }
+                    
+                    
+                
             }
         }
     }

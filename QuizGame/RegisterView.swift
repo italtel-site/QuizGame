@@ -8,23 +8,23 @@
 import SwiftUI
 
 
-struct RegisteredUsers: {
-    static var users: UserData[] = []
+struct RegisteredUsers {
+    static var prova = UserData(username: "Prova", password: "Prova")
+    static var users: [UserData] = [prova]
 
     static func addUser(user: UserData) {
         users.append(user)
     }
-
-    static func removeUser(user: UserData) {
-        if(users.contains(user)) {
-          users.remove(user)
-        }
+    
+    static func getUsers(){
+        print(users)
     }
+    
 }
 
 
 struct RegisterView: View {
-    @State var userValue = UserData()
+    @State var userValue: UserData = UserData(nome:"", cognome: "")
     var body: some View {
         NavigationStack{
           VStack {
@@ -51,20 +51,23 @@ struct RegisterView: View {
                
             }
           VStack(spacing: 50) {
-
-            Button(action: {
-              RegisteredUsers.users.addUser(userValue)
-            }){
-              NavigationLink(destination: LoginView()){
-                  Text("Registrati")
-                    .font(.title2)
+              Button(action: {
+                  RegisteredUsers.users.append(userValue)
+                  RegisteredUsers.getUsers()
+              }) {
+                  NavigationLink(destination: LoginView()){
+                      Text("Registrati")
+                          .font(.title2)
+                  }
               }
+              
+    
                 .padding()
                 .padding(.horizontal)
                 .background(Color.red)
                 .cornerRadius(10)
                 .foregroundColor(.white)
-              }
+              
             }
           }
         }

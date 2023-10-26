@@ -25,8 +25,7 @@ struct MyTabNav: View {
             Image(systemName: "timer.circle.fill")
             Text("Cronologia")
             }
-            Text("Impostazioni e profilo")
-            .font(.system(size: 30, weight: .bold, design: .rounded))
+            ImpostazioniView()
             .tabItem {
             Image(systemName: "gear.circle.fill")
             Text("Impostazioni")
