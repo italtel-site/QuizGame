@@ -32,66 +32,68 @@ func checkGiorno() -> Bool {
 struct HomepageView: View {
     @State var userValue = UserData(nome: "Prova")
     var body: some View {
-        VStack(spacing: 20) {
-            Titolo(titolo: "QuizAR")
-    
-           if (checkGiorno()) {
-               Text("Buongiorno, " + userValue.nome + "!").font(.title)
-                   .frame(maxWidth: .infinity, alignment: .leading)
-                   .padding(.leading)
-                   .padding(.bottom)
-           }
-
-           else{
-               Text("Buonasera, " + userValue.nome + "!").font(.title)
-                   .frame(maxWidth: .infinity, alignment: .leading)
-                   .padding(.leading)
-                   .padding(.bottom)
-           }
-            
-            VStack(spacing: 50) {
-                VStack(spacing: 10) {
-                    Text("Rimangono").font(.title2)
-                    Text("120").font(.system(size: 60 ,weight: .bold))
-                    Text("giorni alla prova").font(.title2)
-                    
-                }.frame(maxWidth: 300, maxHeight: 150)
-                .padding()
-                .background(Color.red)
-                .cornerRadius(12)
-            
+        NavigationStack{
+            VStack(spacing: 20) {
+                Titolo(titolo: "QuizAR")
                 
-                
-                
-                Button(action: {}){
-                    VStack {
-                        Image(systemName: "play.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 50)
-                        Text("Avvia nuova simulazione").font(.title2)
-                    }
-                }.frame(maxWidth: 300, maxHeight: 150)
-                .padding()
-                .background(Color.red)
-                .cornerRadius(12)
-                
-            }.fixedSize(horizontal: false, vertical: false)
-            .frame(maxHeight: 400)
-    
-            Button(action: {}) {
-                HStack{
-                    Image(systemName: "hammer.fill")
-                    Text("Esercitati senza limiti di tempo").font(.body)
+                if (checkGiorno()) {
+                    Text("Buongiorno, " + userValue.nome + "!").font(.title)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading)
+                        .padding(.bottom)
                 }
+                
+                else{
+                    Text("Buonasera, " + userValue.nome + "!").font(.title)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading)
+                        .padding(.bottom)
+                }
+                
+                VStack(spacing: 50) {
+                    VStack(spacing: 10) {
+                        Text("Rimangono").font(.title2)
+                        Text("120").font(.system(size: 60 ,weight: .bold))
+                        Text("giorni alla prova").font(.title2)
+                        
+                    }.frame(maxWidth: 300, maxHeight: 150)
+                        .padding()
+                        .background(Color.red)
+                        .cornerRadius(12)
+                    
+                    
+                    
+                    
+                    NavigationLink(destination: TestView()){
+                        VStack {
+                            Image(systemName: "play.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 50)
+                            Text("Avvia nuova simulazione").font(.title2)
+                        }
+                    }.frame(maxWidth: 300, maxHeight: 150)
+                        .padding()
+                        .background(Color.red)
+                        .cornerRadius(12)
+                    
+                }.fixedSize(horizontal: false, vertical: false)
+                    .frame(maxHeight: 400)
+                
+                Button(action: {}) {
+                    HStack{
+                        Image(systemName: "hammer.fill")
+                        Text("Esercitati senza limiti di tempo").font(.body)
+                    }
+                }
+                .frame(maxWidth: 300)
+                .padding()
+                .background(Color.gray)
+                .cornerRadius(12)
+                Spacer()
             }
-            .frame(maxWidth: 300)
-            .padding()
-            .background(Color.gray)
-            .cornerRadius(12)
-            Spacer()
+            .frame(maxWidth: .infinity)
         }
-        .frame(maxWidth: .infinity)
     }
 }
 
