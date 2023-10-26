@@ -60,6 +60,7 @@ struct MyTextField: View {
 
 struct LoginView: View {
     @State var userValue = UserData(nome: "", cognome: "")
+    @State private var readyToNavigate : Bool = false
     var body: some View {
         NavigationStack{
             VStack {
@@ -73,7 +74,7 @@ struct LoginView: View {
                 MyTextField(withIcon: "key.fill", textValue: $userValue.password,
                             isMandatory: true, isSecret: true, textHint: "password")
                 HStack(spacing: 50) {
-                    NavigationLink(destination: MenuView().navigationBarBackButtonHidden(true)){
+                    /*NavigationLink(destination: MenuView().navigationBarBackButtonHidden(true)){
                         Text("Login")
                     }
                         .foregroundColor(.purple)
@@ -82,7 +83,26 @@ struct LoginView: View {
                     Button("Pulisci") {
                         userValue.emptyFileds()
                     }.foregroundColor(.green)
-                        .disabled(userValue.checkReset)
+                        .disabled(userValue.checkReset)*/
+
+                    NavigationStack {
+                        VStack {
+                            Button {
+                                for user in RegisteredUsers.users {
+                                    if(user.username == $userValue.username && user.password == $userValue.password) {
+                                        readyToNavigate = true
+                                        break 
+                                    }
+                                }
+                            } label: {
+                                Text("Navigate Button")
+                            }
+                        }
+                        .navigationTitle("Navigation")
+                        .navigationDestination(isPresented: $readyToNavigate) {
+                            HomepageView()
+                        }
+                    }
                 }
             }
         }

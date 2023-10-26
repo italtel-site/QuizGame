@@ -8,7 +8,19 @@
 import SwiftUI
 
 
+struct RegisteredUsers: {
+    static var users: UserData[] = []
 
+    static func addUser(user: UserData) {
+        users.append(user)
+    }
+
+    static func removeUser(user: UserData) {
+        if(users.contains(user)) {
+          users.remove(user)
+        }
+    }
+}
 
 
 struct RegisterView: View {
@@ -40,15 +52,19 @@ struct RegisterView: View {
             }
           VStack(spacing: 50) {
 
-            NavigationLink(destination: LoginView()){
-                Text("Registrati")
-                  .font(.title2)
-            }
-              .padding()
-              .padding(.horizontal)
-              .background(Color.red)
-              .cornerRadius(10)
-              .foregroundColor(.white)
+            Button(action: {
+              RegisteredUsers.users.addUser(userValue)
+            }){
+              NavigationLink(destination: LoginView()){
+                  Text("Registrati")
+                    .font(.title2)
+              }
+                .padding()
+                .padding(.horizontal)
+                .background(Color.red)
+                .cornerRadius(10)
+                .foregroundColor(.white)
+              }
             }
           }
         }
