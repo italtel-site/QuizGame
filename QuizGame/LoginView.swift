@@ -108,7 +108,7 @@ struct LoginView: View {
                             .cornerRadius(10)
                             .foregroundColor(.white)
                             
-                            Text(controlloLogin ? "Username o password errato" : "" )
+                            
                             
                             NavigationLink(destination: RegisterView()) {
                                 Text("Registrati")
@@ -118,6 +118,9 @@ struct LoginView: View {
                             .background(Color.orange)
                             .cornerRadius(10)
                             .foregroundColor(.white)
+                            
+                    Text(controlloLogin ? "Username o password errato" : "" ).foregroundColor(.red)
+    
                         }
                         .navigationDestination(isPresented: $readyToNavigate) {
                             MenuView().navigationBarBackButtonHidden(true)
