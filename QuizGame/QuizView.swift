@@ -6,44 +6,19 @@
 //
 
 import SwiftUI
-import SwiftData
-/*struct Esami
-{
-    static var esamiFinali: [Esame] = [Esame(id: 1, domandeQuiz: [
-        DomandaQuiz(
-            id: 1,
-            descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?",
-            risposte: [
-                RispostaQuiz(id: 1, risposta: "SQL", correctAnswer: true),
-                RispostaQuiz(id: 2, risposta: "Spring", correctAnswer: false),
-                RispostaQuiz(id: 3, risposta: "C#", correctAnswer: false),
-                RispostaQuiz(id: 4, risposta: "Java", correctAnswer: false)
-            ],
-            risultato: /*nil*/ RispostaQuiz(id:1,risposta: "Spring",correctAnswer: false)
-        ),
-        DomandaQuiz(
-            id: 1,
-            descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?",
-            risposte: [
-                RispostaQuiz(id: 1, risposta: "SQL", correctAnswer: true),
-                RispostaQuiz(id: 2, risposta: "Spring", correctAnswer: false),
-                RispostaQuiz(id: 3, risposta: "C#", correctAnswer: false),
-                RispostaQuiz(id: 4, risposta: "Java", correctAnswer: false)
-            ],
-            risultato: /*nil*/ RispostaQuiz(id:2,risposta: "Spring",correctAnswer: false)
-        )
-    ], id_utente: 1, dataQuiz: "27/10/2023", orarioQuiz:"20:30")]
-    
-    static func addEsame(esame: Esame)
-    {
-        esamiFinali.append(esame)
-    }
-}*/
 
-struct Esami{
-    var esamiFinali: [Esame]
+struct RispostaQuiz{
+    var id: Int
+    var risposta: String
+    var correctAnswer: Bool
 }
 
+struct DomandaQuiz {
+    var id: Int
+    var descrizione: String
+    var risposte: [RispostaQuiz]
+    var risultato: RispostaQuiz?
+}
 
 struct DomandaView: View{
     @State var domandaEsame: DomandaQuiz
@@ -59,7 +34,6 @@ struct DomandaView: View{
     
     var body: some View{
         VStack{
-            //Text("Totale Esami: \(Esami.esamiFinali.count)")
             Text("Domanda \(indice+1) di \(quantita)")
                 .font(.title2 .weight(.bold))
                 .foregroundColor(.white)
@@ -190,6 +164,31 @@ struct EndQuizView: View{
 
 struct TestView: View {
     @State var wantToEnd:Bool = false
+    var domandeEsame: [DomandaQuiz] = [
+        DomandaQuiz(
+            id: 1,
+            descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?",
+            risposte: [
+                RispostaQuiz(id: 1, risposta: "SQL", correctAnswer: true),
+                RispostaQuiz(id: 2, risposta: "Spring", correctAnswer: false),
+                RispostaQuiz(id: 3, risposta: "C#", correctAnswer: false),
+                RispostaQuiz(id: 4, risposta: "Java", correctAnswer: false)
+            ],
+            risultato: nil //RispostaQuiz(id:0,risposta: "none",correctAnswer: false)
+        ),
+        DomandaQuiz(
+            id: 1,
+            descrizione: "Per i database quale linguaggio si deve utilizzare per effettuare delle query?",
+            risposte: [
+                RispostaQuiz(id: 1, risposta: "SQL", correctAnswer: true),
+                RispostaQuiz(id: 2, risposta: "Spring", correctAnswer: false),
+                RispostaQuiz(id: 3, risposta: "C#", correctAnswer: false),
+                RispostaQuiz(id: 4, risposta: "Java", correctAnswer: false)
+            ],
+            risultato: nil //RispostaQuiz(id:0,risposta: "none",correctAnswer: false)
+        )
+
+    ]
     @State private var timeRemaining = 1800
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var seconds=00
