@@ -122,7 +122,7 @@ struct EndQuizView: View{
                     .font(.title3 .weight(.bold))
                     .foregroundColor(.white)
                 HStack{
-                    NavigationLink(destination: LoginView()){
+                    NavigationLink(destination: CronologiaView().navigationBarBackButtonHidden(true)){
                         HStack{
                             Text("Si")
                         }

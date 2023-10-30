@@ -30,21 +30,21 @@ func checkGiorno() -> Bool {
 //dateFormatter.dateFormat = "HH:mm:ss"
 
 struct HomepageView: View {
-    @State var userValue = UserData(nome: "Prova")
+    //@State var userValue = UserData(nome: "Prova")
     var body: some View {
         NavigationStack{
             VStack(spacing: 20) {
                 Titolo(titolo: "QuizAR")
                 
                 if (checkGiorno()) {
-                    Text("Buongiorno, " + userValue.nome + "!").font(.title)
+                    Text("Buongiorno, " + CurrentUser.currentUser.nome + "!").font(.title)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                         .padding(.bottom)
                 }
                 
                 else{
-                    Text("Buonasera, " + userValue.nome + "!").font(.title)
+                    Text("Buonasera, " + CurrentUser.currentUser.nome + "!").font(.title)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading)
                         .padding(.bottom)
@@ -58,7 +58,8 @@ struct HomepageView: View {
                         
                     }.frame(maxWidth: 300, maxHeight: 150)
                         .padding()
-                        .background(Color.red)
+                        .foregroundColor(.white)
+                        .background(Color(red: 0.54, green: 0, blue: 0, opacity: 1))
                         .cornerRadius(12)
                     
                     
@@ -70,26 +71,33 @@ struct HomepageView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 50)
+                                .foregroundColor(.white)
                             Text("Avvia nuova simulazione").font(.title2)
+                                .foregroundColor(.white)
                         }
                     }.frame(maxWidth: 300, maxHeight: 150)
                         .padding()
                         .background(Color.red)
                         .cornerRadius(12)
+                        .shadow(color: Color(red: 0.54, green: 0, blue: 0, opacity: 1), radius: 0, x: 10, y: 10)
                     
                 }.fixedSize(horizontal: false, vertical: false)
                     .frame(maxHeight: 400)
                 
-                Button(action: {}) {
-                    HStack{
-                        Image(systemName: "hammer.fill")
-                        Text("Esercitati senza limiti di tempo").font(.body)
+                NavigationLink(destination: TestView()) {
+                    Button(action: {}) {
+                        HStack{
+                            Image(systemName: "hammer.fill")
+                            Text("Esercitati senza limiti di tempo").font(.body)
+                        }.foregroundColor(.white)
                     }
+                    .frame(maxWidth: 300)
+                    .padding()
+                    .background(Color.gray)
+                    .cornerRadius(12)
+                    .shadow(color: .black, radius: 0, x: 10, y: 10)
                 }
-                .frame(maxWidth: 300)
-                .padding()
-                .background(Color.gray)
-                .cornerRadius(12)
+                
                 Spacer()
             }
             .frame(maxWidth: .infinity)

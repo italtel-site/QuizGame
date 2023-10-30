@@ -47,7 +47,7 @@ struct Sommario: View {
     
     var testo: String
     var totale: Int
-    
+    var bgColor: Color = .white
     var body: some View {
         VStack(spacing: 10)
         {
@@ -56,8 +56,11 @@ struct Sommario: View {
         }
         .frame(maxWidth: .infinity)
         .padding(20)
+        
         .overlay(RoundedRectangle(cornerRadius: 15)
             .stroke(.black, lineWidth: 1.5))
+        .background(bgColor)
+        .cornerRadius(15)
     }
 }
 
@@ -103,8 +106,8 @@ struct CronologiaView: View {
                 Titolo(titolo: "Cronologia")
                 HStack(spacing: 20)
                 {
-                    Sommario(testo: "Simulazioni completate", totale: totaleSimulazioni)
-                    Sommario(testo: "Simulazioni passate", totale: totaleSimulazioniPassate())
+                    Sommario(testo: "Simulazioni completate", totale: totaleSimulazioni, bgColor: .yellow)
+                    Sommario(testo: "Simulazioni passate", totale: totaleSimulazioniPassate(), bgColor: .green)
                 }
                 .padding(15)
                 

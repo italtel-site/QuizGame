@@ -37,7 +37,7 @@ struct Risposte: View {
     }
     
     var body: some View {
-        NavigationLink(destination: RispostaView(idDomanda: numDomanda, stato: stato, idRisposta: 2))
+        NavigationLink(destination: RispostaView(idDomanda: numDomanda, stato: stato, idRisposta: 3))
         {
             HStack()
             {

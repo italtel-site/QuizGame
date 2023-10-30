@@ -35,6 +35,11 @@ struct UserData {
     
 }
 
+struct CurrentUser {
+    static var currentUser  : UserData = UserData(nome:"ProvaCurrent");
+    
+}
+
 struct MyTextField: View {
     var withIcon: String
     @Binding var textValue: String
@@ -62,6 +67,10 @@ struct LoginView: View {
     @State var userValue = UserData(nome: "", cognome: "")
     @State private var readyToNavigate : Bool = false
     @State private var controlloLogin: Bool = false
+    
+    
+  
+    
     var body: some View {
         NavigationStack{
             VStack(spacing: 20) {
@@ -95,6 +104,7 @@ struct LoginView: View {
                                     if(user.username == userValue.username && user.password == userValue.password) {
                                         readyToNavigate = true
                                         controlloLogin = false
+                                        CurrentUser.currentUser = user
                                         break
                                     }
                                     controlloLogin = true
